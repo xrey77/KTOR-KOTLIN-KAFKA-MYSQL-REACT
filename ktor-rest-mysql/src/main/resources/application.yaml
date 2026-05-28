@@ -1,0 +1,25 @@
+ktor:
+  development: true
+  deployment:
+    port: 8080
+    watch:
+      - classes
+      - resources    
+  application:
+    modules:
+      - com.kotlin.ApplicationKt.configureSecurity    
+      - com.kotlin.RoutingKt.configureRouting
+      - com.kotlin.ApplicationKt.module
+
+jwt:
+    secret: ${JWT_SECRET:-my_temporary_local_development_secret_key}
+    issuer: "http://127.0.0.1:8080"
+    audience: "http://127.0.0.1:8080/main"
+    realm: "Access to 'main'"
+
+storage:
+  driverClassName: "com.mysql.cj.jdbc.Driver"
+  jdbcUrl: "jdbc:mysql://127.0.0.1:3306/ktor_kotlin"
+  user: "rey"
+  password: "rey"
+
